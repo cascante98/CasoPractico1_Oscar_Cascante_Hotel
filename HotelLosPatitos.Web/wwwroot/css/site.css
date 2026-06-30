@@ -1,0 +1,233 @@
+/* ===========================================================
+   Hotel Los Patitos — Tema visual global
+   Paleta: teal profundo + dorado cálido sobre crema suave
+   =========================================================== */
+
+:root {
+    --hp-bg: #FBF8F3;
+    --hp-deep: #123C4A;
+    --hp-deep-2: #1C5566;
+    --hp-gold: #E0A526;
+    --hp-gold-dark: #C8821A;
+    --hp-ink: #1E2A30;
+    --hp-muted: #5B6B72;
+    --hp-line: #ECE6DC;
+}
+
+/* ---------- Base ---------- */
+body {
+    background-color: var(--hp-bg);
+    color: var(--hp-ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--hp-deep);
+    font-weight: 600;
+}
+
+h1 {
+    margin-bottom: 1.25rem;
+}
+
+main {
+    padding-top: .5rem;
+}
+
+/* ---------- Navbar ---------- */
+.hp-navbar {
+    background: linear-gradient(135deg, #123C4A 0%, #1C5566 100%) !important;
+    box-shadow: 0 4px 18px -10px rgba(18,60,74,.6);
+}
+
+    .hp-navbar .navbar-brand {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 700;
+        color: #fff !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .hp-navbar .nav-link {
+        color: rgba(255,255,255,.82) !important;
+        font-weight: 500;
+        border-radius: 8px;
+        padding: .4rem .85rem !important;
+        transition: background .15s ease, color .15s ease;
+    }
+
+        .hp-navbar .nav-link:hover {
+            color: #fff !important;
+            background: rgba(255,255,255,.12);
+        }
+
+/* ---------- Botones ---------- */
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--hp-deep);
+    --bs-btn-border-color: var(--hp-deep);
+    --bs-btn-hover-bg: var(--hp-deep-2);
+    --bs-btn-hover-border-color: var(--hp-deep-2);
+    --bs-btn-active-bg: var(--hp-deep-2);
+    --bs-btn-active-border-color: var(--hp-deep-2);
+}
+
+.btn-secondary {
+    --bs-btn-bg: #E7E0D4;
+    --bs-btn-border-color: #E7E0D4;
+    --bs-btn-color: #1E2A30;
+    --bs-btn-hover-bg: #DBD2C2;
+    --bs-btn-hover-border-color: #DBD2C2;
+    --bs-btn-hover-color: #1E2A30;
+    --bs-btn-active-bg: #DBD2C2;
+    --bs-btn-active-color: #1E2A30;
+}
+
+.btn-warning {
+    --bs-btn-bg: var(--hp-gold);
+    --bs-btn-border-color: var(--hp-gold);
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: var(--hp-gold-dark);
+    --bs-btn-hover-border-color: var(--hp-gold-dark);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--hp-gold-dark);
+    --bs-btn-active-color: #fff;
+}
+
+.btn-info {
+    --bs-btn-bg: #2C7A8C;
+    --bs-btn-border-color: #2C7A8C;
+    --bs-btn-color: #fff;
+    --bs-btn-hover-bg: #246576;
+    --bs-btn-hover-border-color: #246576;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: #246576;
+    --bs-btn-active-color: #fff;
+}
+
+/* ---------- Tarjetas ---------- */
+.card {
+    border: 1px solid var(--hp-line);
+    border-radius: 18px;
+    box-shadow: 0 6px 18px -14px rgba(18,60,74,.3);
+}
+
+.card-title {
+    color: var(--hp-deep);
+}
+
+/* ---------- Tablas ---------- */
+.table {
+    --bs-table-bg: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px -16px rgba(18,60,74,.35);
+}
+
+.table-striped {
+    --bs-table-striped-bg: #F7F3EC;
+}
+
+.table thead th {
+    background: var(--hp-deep);
+    color: #fff;
+    font-weight: 600;
+    border-bottom: none;
+    white-space: nowrap;
+}
+
+.table > :not(caption) > * > * {
+    padding: .8rem .9rem;
+    border-color: var(--hp-line);
+}
+
+/* ---------- Formularios ---------- */
+.form-label {
+    font-weight: 600;
+    color: var(--hp-deep);
+    font-size: .92rem;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #DDD5C8;
+    padding: .55rem .8rem;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--hp-gold);
+        box-shadow: 0 0 0 .2rem rgba(224,165,38,.2);
+    }
+
+    .form-control[readonly] {
+        background-color: #F2EEE6;
+    }
+
+/* ---------- Badges y alertas ---------- */
+.badge {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: .4em .7em;
+}
+
+    .badge.bg-success {
+        background-color: #2E7D5B !important;
+    }
+
+    .badge.bg-secondary {
+        background-color: #9AA4A8 !important;
+    }
+
+.alert {
+    border-radius: 12px;
+    border: none;
+}
+
+.alert-info {
+    background: #E7F1F2;
+    color: var(--hp-deep);
+}
+
+.alert-warning {
+    background: #FBF0D6;
+    color: #7a5a12;
+}
+
+.alert-success {
+    background: #E3F1E8;
+    color: #225f43;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    background: transparent;
+    color: var(--hp-muted);
+    border-top: 1px solid var(--hp-line) !important;
+}
+
+/* ---------- Pie de página pegado al fondo ---------- */
+html {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+    body > .container {
+        flex: 1 0 auto; /* el contenido crece y empuja el footer hacia abajo */
+    }
+
+.footer {
+    flex-shrink: 0;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}

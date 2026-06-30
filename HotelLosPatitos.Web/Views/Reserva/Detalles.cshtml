@@ -1,0 +1,51 @@
+﻿@model HotelLosPatitos.Entities.Reservacion
+@{
+    ViewData["Title"] = "Detalles de reservación";
+}
+
+<h1>Detalles de reservación</h1>
+
+<div class="mb-4">
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>
+
+<div class="alert alert-success">
+    Reservación N° <strong>@Model.Id</strong> registrada correctamente.
+</div>
+
+<table class="table table-bordered">
+    <tr><th>Nombre de la persona</th><td>@Model.NombreDeLaPersona</td></tr>
+    <tr><th>Identificación</th><td>@Model.Identificacion</td></tr>
+    <tr><th>Teléfono</th><td>@Model.Telefono</td></tr>
+    <tr><th>Correo</th><td>@Model.Correo</td></tr>
+    <tr><th>Fecha de nacimiento</th><td>@Model.FechaNacimiento.ToString("dd/MM/yyyy")</td></tr>
+    <tr><th>Dirección</th><td>@Model.Direccion</td></tr>
+    <tr>
+        <th>Código de la habitación</th>
+        <td>@(Model.Habitacion?.CodigoDeHabitacion ?? "N/D")</td>
+    </tr>
+    <tr>
+        <th>Tipo de habitación</th>
+        <td>
+            @(Model.Habitacion?.TipoDeHabitacion switch
+            {
+                1 => "Junior",
+                2 => "Superior",
+                3 => "Suite",
+                _ => "N/D"
+            })
+        </td>
+    </tr>
+    <tr>
+        <th>Cantidad de personas</th>
+        <td>@(Model.Habitacion?.CantidadDeHuespedesPermitidos.ToString() ?? "N/D")</td>
+    </tr>
+    <tr><th>Fecha de inicio de reserva</th><td>@Model.FechaInicioReserva.ToString("dd/MM/yyyy")</td></tr>
+    <tr><th>Fecha de fin de reserva</th><td>@Model.FechaFinReserva.ToString("dd/MM/yyyy")</td></tr>
+    <tr><th>Fecha de reservación</th><td>@Model.FechaDeRegistro.ToString("dd/MM/yyyy")</td></tr>
+    <tr class="table-warning">
+        <th>Monto total</th>
+        <td><strong>@Model.MontoTotal.ToString("N2")</strong></td>
+    </tr>
+</table>
+

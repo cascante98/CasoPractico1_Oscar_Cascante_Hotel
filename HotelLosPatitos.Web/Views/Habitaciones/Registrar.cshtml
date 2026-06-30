@@ -1,0 +1,82 @@
+﻿@model HotelLosPatitos.Web.ViewModels.HabitacionViewModel
+@{
+    ViewData["Title"] = "Registrar habitación";
+}
+
+<h1>Registrar habitación</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Registrar" method="post">
+    <div class="mb-3">
+        <label asp-for="CodigoDeHabitacion" class="form-label"></label>
+        <input asp-for="CodigoDeHabitacion" class="form-control" readonly />
+    </div>
+    <div class="mb-3">
+        <label asp-for="NombreDeHabitacion" class="form-label"></label>
+        <input asp-for="NombreDeHabitacion" class="form-control" />
+        <span asp-validation-for="NombreDeHabitacion" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CantidadDeHuespedesPermitidos" class="form-label"></label>
+        <input asp-for="CantidadDeHuespedesPermitidos" class="form-control" />
+        <span asp-validation-for="CantidadDeHuespedesPermitidos" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CantidadDeCamas" class="form-label"></label>
+        <input asp-for="CantidadDeCamas" class="form-control" />
+        <span asp-validation-for="CantidadDeCamas" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CantidadDeBanos" class="form-label"></label>
+        <input asp-for="CantidadDeBanos" class="form-control" />
+        <span asp-validation-for="CantidadDeBanos" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Ubicacion" class="form-label"></label>
+        <select asp-for="Ubicacion" class="form-select">
+            <option value="">-- Seleccione --</option>
+            <option value="Edificio A">Edificio A</option>
+            <option value="Edificio B">Edificio B</option>
+            <option value="Edificio C">Edificio C</option>
+        </select>
+        <span asp-validation-for="Ubicacion" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EncargadoDeLimpieza" class="form-label"></label>
+        <select asp-for="EncargadoDeLimpieza" class="form-select">
+            <option value="">-- Seleccione --</option>
+            <option value="Encargado 1">Encargado 1</option>
+            <option value="Encargado 2">Encargado 2</option>
+            <option value="Encargado 3">Encargado 3</option>
+        </select>
+        <span asp-validation-for="EncargadoDeLimpieza" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TipoDeHabitacion" class="form-label"></label>
+        <select asp-for="TipoDeHabitacion" class="form-select">
+            <option value="">-- Seleccione --</option>
+            <option value="1">Junior</option>
+            <option value="2">Superior</option>
+            <option value="3">Suite</option>
+        </select>
+        <span asp-validation-for="TipoDeHabitacion" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CostoDeLimpieza" class="form-label"></label>
+        <input asp-for="CostoDeLimpieza" class="form-control" />
+        <span asp-validation-for="CostoDeLimpieza" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CostoDeReserva" class="form-label"></label>
+        <input asp-for="CostoDeReserva" class="form-control" />
+        <span asp-validation-for="CostoDeReserva" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

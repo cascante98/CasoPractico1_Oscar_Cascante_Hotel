@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="HotelLosPatitos.Business/HotelLosPatitos.Business.csproj" />
+  <Project Path="HotelLosPatitos.DataAccess/HotelLosPatitos.DataAccess.csproj" />
+  <Project Path="HotelLosPatitos.Entities/HotelLosPatitos.Entities.csproj" />
+  <Project Path="HotelLosPatitos.Web/HotelLosPatitos.Web.csproj" />
+</Solution>

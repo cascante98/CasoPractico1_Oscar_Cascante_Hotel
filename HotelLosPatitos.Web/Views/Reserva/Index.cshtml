@@ -1,0 +1,97 @@
+﻿@model List<HotelLosPatitos.Entities.Habitacion>
+@{
+    ViewData["Title"] = "Reservar";
+}
+
+<h1>Reservar habitación</h1>
+
+@if (TempData["Mensaje"] != null)
+{
+    <div class="alert alert-warning">@TempData["Mensaje"]</div>
+}
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Buscar una reserva existente</h5>
+        <form asp-action="Buscar" method="post" class="row g-2">
+            <div class="col-auto">
+                <input type="number" name="idReservacion" class="form-control"
+                       placeholder="Número de reservación" required />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-info">Buscar reserva</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Buscar disponibilidad por fechas</h5>
+        <form asp-action="Index" method="get" class="row g-2 align-items-end">
+            <div class="col-auto">
+                <label class="form-label">Fecha de inicio</label>
+                <input type="date" name="inicio" value="@ViewBag.Inicio" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <label class="form-label">Fecha de fin</label>
+                <input type="date" name="fin" value="@ViewBag.Fin" class="form-control" />
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Buscar disponibles</button>
+            </div>
+            <div class="col-auto">
+                <a asp-action="Index" class="btn btn-secondary">Ver todas</a>
+            </div>
+        </form>
+    </div>
+</div>
+<h4>Habitaciones disponibles</h4>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay habitaciones disponibles en este momento.</div>
+}
+else
+{
+    <table class="table table-striped table-bordered align-middle">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Huéspedes</th>
+                <th>Camas</th>
+                <th>Baños</th>
+                <th>Ubicación</th>
+                <th>Costo por noche</th>
+                <th>Tipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var habitacion in Model)
+            {
+                <tr>
+                    <td>@habitacion.CodigoDeHabitacion</td>
+                    <td>@habitacion.NombreDeHabitacion</td>
+                    <td>@habitacion.CantidadDeHuespedesPermitidos</td>
+                    <td>@habitacion.CantidadDeCamas</td>
+                    <td>@habitacion.CantidadDeBanos</td>
+                    <td>@habitacion.Ubicacion</td>
+                    <td>@habitacion.CostoDeReserva.ToString("N2")</td>
+                    <td>
+                        @(habitacion.TipoDeHabitacion switch
+                        {
+                            1 => "Junior",
+                            2 => "Superior",
+                            3 => "Suite",
+                            _ => "Desconocido"
+                        })
+                    </td>
+                    <td>
+                        <a asp-action="Reservar" asp-route-id="@habitacion.Id"
+                           class="btn btn-sm btn-primary">Reservar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,74 @@
+﻿@model HotelLosPatitos.Web.ViewModels.ReservacionViewModel
+@{
+    ViewData["Title"] = "Reservar";
+}
+
+<h1>Reservar: @Model.CodigoHabitacion - @Model.NombreHabitacion</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Detalle de la habitación</h5>
+        <p class="mb-1"><strong>Código:</strong> @Model.CodigoHabitacion</p>
+        <p class="mb-1"><strong>Tipo:</strong> @Model.TipoHabitacionTexto</p>
+        <p class="mb-1"><strong>Capacidad:</strong> @Model.CapacidadHabitacion personas</p>
+        <p class="mb-1"><strong>Costo por noche:</strong> @Model.CostoPorNoche.ToString("N2")</p>
+        <p class="mb-0"><strong>Costo de limpieza:</strong> @Model.CostoLimpieza.ToString("N2")</p>
+    </div>
+</div>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Reservar" method="post">
+    <input type="hidden" asp-for="IdHabitacion" />
+
+    <div class="mb-3">
+        <label asp-for="NombreDeLaPersona" class="form-label"></label>
+        <input asp-for="NombreDeLaPersona" class="form-control" />
+        <span asp-validation-for="NombreDeLaPersona" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Identificacion" class="form-label"></label>
+        <input asp-for="Identificacion" class="form-control" />
+        <span asp-validation-for="Identificacion" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Telefono" class="form-label"></label>
+        <input asp-for="Telefono" class="form-control" />
+        <span asp-validation-for="Telefono" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Correo" class="form-label"></label>
+        <input asp-for="Correo" class="form-control" />
+        <span asp-validation-for="Correo" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="FechaNacimiento" class="form-label"></label>
+        <input asp-for="FechaNacimiento" class="form-control" type="date"
+               min="1920-01-01" max="@DateTime.Today.AddYears(-18).ToString("yyyy-MM-dd")" />
+        <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Direccion" class="form-label"></label>
+        <input asp-for="Direccion" class="form-control" />
+        <span asp-validation-for="Direccion" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="FechaInicioReserva" class="form-label"></label>
+            <input asp-for="FechaInicioReserva" class="form-control" type="date" />
+            <span asp-validation-for="FechaInicioReserva" class="text-danger"></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="FechaFinReserva" class="form-label"></label>
+            <input asp-for="FechaFinReserva" class="form-control" type="date" />
+            <span asp-validation-for="FechaFinReserva" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar reserva</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

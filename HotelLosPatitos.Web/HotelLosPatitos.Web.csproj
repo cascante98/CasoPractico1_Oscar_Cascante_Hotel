@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotelLosPatitos.Business\HotelLosPatitos.Business.csproj" />
+    <ProjectReference Include="..\HotelLosPatitos.Entities\HotelLosPatitos.Entities.csproj" />
+    <ProjectReference Include="..\HotelLosPatitos.DataAccess\HotelLosPatitos.DataAccess.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>

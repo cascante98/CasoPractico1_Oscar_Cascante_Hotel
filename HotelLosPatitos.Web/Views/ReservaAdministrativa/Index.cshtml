@@ -1,0 +1,76 @@
+﻿@model List<HotelLosPatitos.Entities.Reservacion>
+@{
+    ViewData["Title"] = "Reservas administrativas";
+}
+
+<h1>Reservas registradas</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Filtrar por habitación</h5>
+        <form asp-action="Index" method="get" class="row g-2 align-items-end">
+            <div class="col-auto">
+                <label class="form-label">Habitación</label>
+                <select name="id" class="form-select" asp-items="@ViewBag.Habitaciones"
+                        onchange="this.form.submit()">
+                    <option value="">-- Todas las habitaciones --</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+            </div>
+            <div class="col-auto">
+                <a asp-action="Index" class="btn btn-secondary">Ver todas</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>
+    <a asp-controller="Habitaciones" asp-action="Index" class="btn btn-secondary">
+        Volver a habitaciones
+    </a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No hay reservas registradas para mostrar.</div>
+}
+else
+{
+    <table class="table table-striped table-bordered align-middle">
+        <thead>
+            <tr>
+                <th>ID Reserva</th>
+                <th>Habitación</th>
+                <th>Nombre de persona</th>
+                <th>Identificación</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Monto total</th>
+                <th>Fecha nacimiento</th>
+                <th>Inicio reserva</th>
+                <th>Fin reserva</th>
+                <th>Fecha registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reserva in Model)
+            {
+                <tr>
+                    <td>@reserva.Id</td>
+                    <td>@(reserva.Habitacion?.CodigoDeHabitacion ?? "N/D") - @(reserva.Habitacion?.NombreDeHabitacion ?? "N/D")</td>
+                    <td>@reserva.NombreDeLaPersona</td>
+                    <td>@reserva.Identificacion</td>
+                    <td>@reserva.Telefono</td>
+                    <td>@reserva.Correo</td>
+                    <td>@reserva.MontoTotal.ToString("N2")</td>
+                    <td>@reserva.FechaNacimiento.ToString("dd/MM/yyyy")</td>
+                    <td>@reserva.FechaInicioReserva.ToString("dd/MM/yyyy")</td>
+                    <td>@reserva.FechaFinReserva.ToString("dd/MM/yyyy")</td>
+                    <td>@reserva.FechaDeRegistro.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,236 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+    .hp-wrap {
+        --hp-deep: #123C4A;
+        --hp-deep-2: #1C5566;
+        --hp-gold: #E0A526;
+        --hp-ink: #1E2A30;
+        --hp-muted: #5B6B72;
+        font-family: 'Inter',system-ui,sans-serif;
+        color: var(--hp-ink);
+    }
+
+    .hp-hero {
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        background: linear-gradient(135deg,#123C4A 0%,#1C5566 55%,#226072 100%);
+        border-radius: 24px;
+        padding: 64px 48px;
+        margin: 8px 0 40px;
+        box-shadow: 0 18px 40px -18px rgba(18,60,74,.55);
+    }
+
+        .hp-hero::after {
+            content: "";
+            position: absolute;
+            right: -40px;
+            bottom: -60px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at center, rgba(255,255,255,.10) 0 2px, transparent 3px) 0 0/26px 26px;
+            opacity: .5;
+            pointer-events: none;
+        }
+
+    .hp-eyebrow {
+        text-transform: uppercase;
+        letter-spacing: .22em;
+        font-size: .72rem;
+        font-weight: 600;
+        color: var(--hp-gold);
+        margin-bottom: 14px;
+    }
+
+    .hp-title {
+        color: #fff;
+        font-family: 'Playfair Display',Georgia,serif;
+        font-weight: 700;
+        font-size: clamp(2.2rem,5vw,3.4rem);
+        line-height: 1.05;
+        margin: 0 0 14px;
+    }
+
+    .hp-sub {
+        font-size: 1.05rem;
+        max-width: 560px;
+        color: rgba(255,255,255,.85);
+        margin: 0;
+    }
+
+    .hp-duck {
+        position: absolute;
+        top: 34px;
+        right: 48px;
+        width: 88px;
+        height: 88px;
+        opacity: .95;
+    }
+
+    .hp-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background: #fff;
+        border: 1px solid #ECE6DC;
+        border-radius: 20px;
+        padding: 30px 28px;
+        text-decoration: none;
+        color: var(--hp-ink);
+        box-shadow: 0 6px 18px -12px rgba(18,60,74,.25);
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+        .hp-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 34px -18px rgba(18,60,74,.4);
+            border-color: var(--hp-gold);
+            color: var(--hp-ink);
+        }
+
+    .hp-ic {
+        width: 54px;
+        height: 54px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #EAF1F2;
+        color: var(--hp-deep);
+        margin-bottom: 18px;
+        transition: background .18s ease, color .18s ease;
+    }
+
+    .hp-card:hover .hp-ic {
+        background: var(--hp-gold);
+        color: #fff;
+    }
+
+    .hp-card h3 {
+        font-family: 'Playfair Display',Georgia,serif;
+        font-weight: 600;
+        font-size: 1.3rem;
+        margin: 0 0 8px;
+    }
+
+    .hp-card p {
+        color: var(--hp-muted);
+        font-size: .95rem;
+        margin: 0 0 20px;
+        flex-grow: 1;
+    }
+
+    .hp-go {
+        font-weight: 600;
+        font-size: .92rem;
+        color: var(--hp-deep);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .hp-card:hover .hp-go {
+        color: var(--hp-gold);
+    }
+
+    .hp-go svg {
+        transition: transform .18s ease;
+    }
+
+    .hp-card:hover .hp-go svg {
+        transform: translateX(4px);
+    }
+
+    @@media (max-width:767px) {
+        .hp-hero {
+            padding: 44px 26px;
+        }
+
+        .hp-duck {
+            display: none;
+        }
+    }
+</style>
+
+<div class="hp-wrap">
+    <section class="hp-hero">
+        <svg class="hp-duck" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="44" cy="48" rx="26" ry="18" fill="#E0A526" />
+            <circle cx="24" cy="33" r="13" fill="#E9B84A" />
+            <path d="M11 33 L2 30 L11 27 Z" fill="#C8821A" />
+            <circle cx="22" cy="30" r="2" fill="#123C4A" />
+            <path d="M42 45 q12 -6 18 2 q-9 6 -18 -2 Z" fill="#C8821A" opacity=".5" />
+            <path d="M6 66 q10 -6 20 0 t20 0 t20 0" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none" />
+        </svg>
+        <div class="hp-eyebrow">Sistema de Reservaciones</div>
+        <h1 class="hp-title">Hotel Los Patitos</h1>
+        <p class="hp-sub">Administre habitaciones, gestione reservas y consulte el histórico, todo desde un mismo lugar.</p>
+    </section>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <a class="hp-card" asp-controller="Habitaciones" asp-action="Index">
+                <span class="hp-ic">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 9v9" />
+                        <path d="M2 13h20" />
+                        <path d="M22 18V9a2 2 0 0 0-2-2h-9v6" />
+                        <circle cx="6" cy="11" r="1.6" />
+                    </svg>
+                </span>
+                <h3>Habitaciones</h3>
+                <p>Registre, edite y administre las habitaciones del hotel y su disponibilidad.</p>
+                <span class="hp-go">
+                    Administrar
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a class="hp-card" asp-controller="Reserva" asp-action="Index">
+                <span class="hp-ic">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4.5" width="18" height="16" rx="2.5" />
+                        <path d="M3 9h18" />
+                        <path d="M8 2.5v4" />
+                        <path d="M16 2.5v4" />
+                        <path d="M9 14.5l2 2 4-4" />
+                    </svg>
+                </span>
+                <h3>Reservar</h3>
+                <p>Vea las habitaciones disponibles y realice una nueva reserva para sus huéspedes.</p>
+                <span class="hp-go">
+                    Reservar
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a class="hp-card" asp-controller="ReservaAdministrativa" asp-action="Index">
+                <span class="hp-ic">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 6h12" />
+                        <path d="M8 12h12" />
+                        <path d="M8 18h12" />
+                        <circle cx="3.8" cy="6" r="1.3" />
+                        <circle cx="3.8" cy="12" r="1.3" />
+                        <circle cx="3.8" cy="18" r="1.3" />
+                    </svg>
+                </span>
+                <h3>Reservas registradas</h3>
+                <p>Consulte el histórico completo de reservas, con filtro por habitación.</p>
+                <span class="hp-go">
+                    Ver histórico
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="M13 6l6 6-6 6" /></svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
